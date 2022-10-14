@@ -22,7 +22,7 @@ const App = () => {
         </div>
       </header>
       <div className="flex max-w-4xl m-auto gap-10">
-        <div className="grow">
+        <div className="flex-1">
           <h1 className="m-0 mb-5 text-4xl text-indigo-900">Calcule o seu IMC</h1>
           <p className="text-base text-gray-500 mb-10">
             IMC é a sigla para indice de massa corporea, <br />
@@ -51,8 +51,8 @@ const App = () => {
             Calcular
           </button>
         </div>
-        <div className="grow flex">
-          <div className="grow grid grid-cols-2 gap-5">
+        <div className="flex-1 flex">
+          <div className="flex-1 grid grid-cols-2 gap-5">
             {levels.map((item, key) => (
               <GridItem key={key} item={item} />
             ))}
