@@ -1,6 +1,8 @@
 import { useState, ChangeEvent } from 'react';
 import './App.css';
 import poweredImage from './assets/icons/powered.png';
+import { levels } from './helpers/imc';
+import { GridItem } from './components/GridItem';
 
 const App = () => {
   const [heightField, setHeightField] = useState<number>(0);
@@ -11,14 +13,7 @@ const App = () => {
   const weightChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setWeightField(parseFloat(event.target.value));
   };
-  const calculateHandler = () => {
-    if (heightField && weightField) {
-      const out = weightField / (heightField * heightField);
-      alert(out);
-    } else {
-      alert('DIGITE TODOS OS CAMPOS');
-    }
-  };
+
   return (
     <div className="wrap">
       <header>
@@ -52,12 +47,17 @@ const App = () => {
           <button
             className="bg-cyan-600 text-white text-sm border-0 rounded-lg py-3.5 w-full cursor-pointer mt-10 transition ease-in-out  hover:opacity-80"
             type="submit"
-            onClick={calculateHandler}
           >
             Calcular
           </button>
         </div>
-        <div className="grow bg-cyan-300">RIGHT</div>
+        <div className="grow flex">
+          <div className="grow grid grid-cols-2 gap-5">
+            {levels.map((item, key) => (
+              <GridItem key={key} item={item} />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );
