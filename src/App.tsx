@@ -35,7 +35,7 @@ const App = () => {
       </header>
       <div className="flex max-w-4xl m-auto gap-10">
         <div className="flex-1">
-          <h1 className="m-0 mb-5 text-4xl text-sky-900">Calcule o seu IMC</h1>
+          <h1 className="m-0 mb-5 text-4xl font-bold text-sky-900">Calcule o seu IMC</h1>
           <p className="text-base text-gray-500 mb-10">
             IMC é a sigla para indice de massa corporea, <br />
             paramêtro adotado pela organização mundial de saude
@@ -43,22 +43,25 @@ const App = () => {
           </p>
 
           <input
-            className="w-full border-0 border-b-2 border-solid border-neutral-300 py-2.5 px-0.5 mb-5 text-sm outline-none"
+            className="w-full border-0 border-b-2 border-solid border-neutral-300 py-2.5 px-0.5 mb-5 text-sm outline-none disabled:opacity-30"
             type="number"
             placeholder="Digite seu peso, Ex: 65.3 (em kg)"
             value={weightField > 0 ? weightField : ''}
             onChange={weightChangeHandler}
+            disabled={!!toShow}
           />
           <input
-            className="w-full border-0 border-b-2 border-solid border-neutral-300 py-2.5 px-0.5 mb-5 text-sm outline-none"
+            className="w-full border-0 border-b-2 border-solid border-neutral-300 py-2.5 px-0.5 mb-5 text-sm outline-none disabled:opacity-30"
             type="number"
             placeholder="Digite sua altura, Ex: 1.7 (em metros)"
             value={heightField > 0 ? heightField : ''}
             onChange={heightChangeHandler}
+            disabled={!!toShow}
           />
           <button
+            disabled={!!toShow}
             onClick={buttonClickHandler}
-            className="bg-sky-700 text-white text-sm border-0 rounded-lg py-3.5 w-full cursor-pointer mt-10 transition ease-in-out  hover:opacity-80"
+            className="bg-sky-700 text-white text-sm border-0 rounded-lg py-3.5 w-full cursor-pointer mt-10 transition ease-in-out hover:opacity-80 disabled:opacity-30"
             type="submit"
           >
             Calcular
@@ -76,7 +79,7 @@ const App = () => {
             <div className="flex-1 flex">
               <div
                 onClick={backButtonHandler}
-                className="absolute bg-sky-700 w-16 h-16 rounded-full flex justify-center items-center cursor-pointer -ml-9 mt-36"
+                className="absolute bg-sky-700 w-16 h-16 rounded-full flex justify-center items-center cursor-pointer -ml-9 mt-36 hover:opacity-90"
               >
                 <img src={leftArrowImage} alt="icone  voltar" width={25} />
               </div>
