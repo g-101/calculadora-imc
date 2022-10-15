@@ -29,11 +29,11 @@ const App = () => {
   return (
     <div className="wrap">
       <header>
-        <div className="max-w-4xl my-10 mx-auto">
+        <div className="max-w-4xl my-10 mx-auto xs:py-0 xs:px-5 lg:p-0">
           <img className="inline-block" src={poweredImage} alt="logo" width={160} />
         </div>
       </header>
-      <div className="flex max-w-4xl m-auto gap-10">
+      <div className="flex max-w-4xl m-auto gap-10 xs:py-0 xs:px-5 xs:flex-col xs:gap-0 lg:p-0 lg:flex-row lg:gap-10">
         <div className="flex-1">
           <h1 className="m-0 mb-5 text-4xl font-bold text-sky-900">Calcule o seu IMC</h1>
           <p className="text-base text-gray-500 mb-10">
@@ -67,9 +67,9 @@ const App = () => {
             Calcular
           </button>
         </div>
-        <div className="flex-1 flex">
+        <div className="flex-1 flex xs:mt-10 lg:m-0">
           {!toShow && (
-            <div className="flex-1 grid grid-cols-2 gap-5">
+            <div className="flex-1 grid grid-cols-2 gap-5 xs:grid-cols-1 lg:grid-cols-2">
               {levels.map((item, key) => (
                 <GridItem key={key} item={item} />
               ))}
@@ -79,7 +79,7 @@ const App = () => {
             <div className="flex-1 flex">
               <div
                 onClick={backButtonHandler}
-                className="absolute bg-sky-700 w-16 h-16 rounded-full flex justify-center items-center cursor-pointer -ml-9 mt-36 hover:opacity-90"
+                className="absolute bg-sky-700 w-16 h-16 rounded-full flex justify-center items-center cursor-pointer -ml-9 mt-36 hover:opacity-90 xs:mt-0 xs:ml-0 xs:rounded-lg lg:-ml-9 lg:mt-36"
               >
                 <img src={leftArrowImage} alt="icone  voltar" width={25} />
               </div>
