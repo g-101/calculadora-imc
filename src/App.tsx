@@ -1,6 +1,7 @@
 import { useState, ChangeEvent } from 'react';
 import './App.css';
 import poweredImage from './assets/icons/powered.png';
+import leftArrowImage from './assets/icons/leftarrow.png';
 import { calculateImc, Level, levels } from './helpers/imc';
 import { GridItem } from './components/GridItem';
 
@@ -20,7 +21,11 @@ const App = () => {
       setToShow(calculateImc(weightField, heightField));
     }
   };
-
+  const backButtonHandler = () => {
+    setToShow(null);
+    setWeightField(0);
+    setHeightField(0);
+  };
   return (
     <div className="wrap">
       <header>
@@ -30,13 +35,13 @@ const App = () => {
       </header>
       <div className="flex max-w-4xl m-auto gap-10">
         <div className="flex-1">
-          <h1 className="m-0 mb-5 text-4xl text-indigo-900">Calcule o seu IMC</h1>
+          <h1 className="m-0 mb-5 text-4xl text-sky-900">Calcule o seu IMC</h1>
           <p className="text-base text-gray-500 mb-10">
             IMC é a sigla para indice de massa corporea, <br />
             paramêtro adotado pela organização mundial de saude
             <br /> e usada para calcular se uma pessoa está no peso ideal.
           </p>
-          {/* bg-fuchsia-500 */}
+
           <input
             className="w-full border-0 border-b-2 border-solid border-neutral-300 py-2.5 px-0.5 mb-5 text-sm outline-none"
             type="number"
@@ -53,7 +58,7 @@ const App = () => {
           />
           <button
             onClick={buttonClickHandler}
-            className="bg-cyan-600 text-white text-sm border-0 rounded-lg py-3.5 w-full cursor-pointer mt-10 transition ease-in-out  hover:opacity-80"
+            className="bg-sky-700 text-white text-sm border-0 rounded-lg py-3.5 w-full cursor-pointer mt-10 transition ease-in-out  hover:opacity-80"
             type="submit"
           >
             Calcular
@@ -69,7 +74,12 @@ const App = () => {
           )}
           {toShow && (
             <div className="flex-1 flex">
-              {/* <div>button arrow</div> */}
+              <div
+                onClick={backButtonHandler}
+                className="absolute bg-sky-700 w-16 h-16 rounded-full flex justify-center items-center cursor-pointer -ml-9 mt-36"
+              >
+                <img src={leftArrowImage} alt="icone  voltar" width={25} />
+              </div>
               <GridItem item={toShow} />
             </div>
           )}

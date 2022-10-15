@@ -16,8 +16,10 @@ export const calculateImc = (weight: number, height: number) => {
   const imc = weight / (height * height);
   for (let index in levels) {
     if (imc >= levels[index].imc[0] && imc < levels[index].imc[1]) {
-      levels[index].yourImc = imc;
-      return levels[index];
+      /*vai fazer a copia e salvar apenas o objeto que satifaz o imc */
+      const levelCopy: Level = { ...levels[index] };
+      levelCopy.yourImc = imc; /*cria um atributo que salva o imc calculado */
+      return levelCopy;
     }
   }
   return null;
