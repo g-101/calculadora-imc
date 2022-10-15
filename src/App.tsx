@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 import './App.css';
-import poweredImage from './assets/icons/powered.png';
+import poweredImage from './assets/icons/powered2.png';
 import leftArrowImage from './assets/icons/leftarrow.png';
 import { calculateImc, Level, levels } from './helpers/imc';
 import { GridItem } from './components/GridItem';
@@ -30,7 +30,7 @@ const App = () => {
     <div className="wrap">
       <header>
         <div className="max-w-4xl my-10 mx-auto">
-          <img className="inline-block" src={poweredImage} alt="logo" width={150} />
+          <img className="inline-block" src={poweredImage} alt="logo" width={160} />
         </div>
       </header>
       <div className="flex max-w-4xl m-auto gap-10">
