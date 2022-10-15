@@ -1,18 +1,15 @@
 # Calculadora IMC
 
-Um app que calcula o IMC de uma pessoa e informa se está no peso ideal.<br/>
+Um app que calcula o IMC de uma pessoa e informa se está no peso ideal.<br/><br/>
 <a href="https://calculadora-imc-g101.netlify.app/">Acesse o link da demo</a>
 
-## Screenshots
+## Tecnologias
 
-![App Screenshot](./1.png)
-
-## Techs
-
+- HTML
 - TypeScript
 - React
 - Tailwind CSS
 
 ## O que eu aprendi
 
-Coloquei em pratica conceitos de JSX, Componentes, Eventos, State, Props, Estilização com biblioteca css.
+Coloquei em pratica conceitos de JSX, Componentes, Eventos, State, Props, Helpers e Estilização com Biblioteca CSS.
