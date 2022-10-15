@@ -1,17 +1,24 @@
 import { useState, ChangeEvent } from 'react';
 import './App.css';
 import poweredImage from './assets/icons/powered.png';
-import { levels } from './helpers/imc';
+import { calculateImc, Level, levels } from './helpers/imc';
 import { GridItem } from './components/GridItem';
 
 const App = () => {
-  const [heightField, setHeightField] = useState<number>(0);
   const [weightField, setWeightField] = useState<number>(0);
+  const [heightField, setHeightField] = useState<number>(0);
+  const [toShow, setToShow] = useState<Level | null>(null);
+
+  const weightChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
+    setWeightField(parseFloat(event.target.value));
+  };
   const heightChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
     setHeightField(parseFloat(event.target.value));
   };
-  const weightChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
-    setWeightField(parseFloat(event.target.value));
+  const buttonClickHandler = () => {
+    if (weightField && heightField) {
+      setToShow(calculateImc(weightField, heightField));
+    }
   };
 
   return (
@@ -45,6 +52,7 @@ const App = () => {
             onChange={heightChangeHandler}
           />
           <button
+            onClick={buttonClickHandler}
             className="bg-cyan-600 text-white text-sm border-0 rounded-lg py-3.5 w-full cursor-pointer mt-10 transition ease-in-out  hover:opacity-80"
             type="submit"
           >
@@ -52,11 +60,19 @@ const App = () => {
           </button>
         </div>
         <div className="flex-1 flex">
-          <div className="flex-1 grid grid-cols-2 gap-5">
-            {levels.map((item, key) => (
-              <GridItem key={key} item={item} />
-            ))}
-          </div>
+          {!toShow && (
+            <div className="flex-1 grid grid-cols-2 gap-5">
+              {levels.map((item, key) => (
+                <GridItem key={key} item={item} />
+              ))}
+            </div>
+          )}
+          {toShow && (
+            <div className="flex-1 flex">
+              {/* <div>button arrow</div> */}
+              <GridItem item={toShow} />
+            </div>
+          )}
         </div>
       </div>
     </div>
