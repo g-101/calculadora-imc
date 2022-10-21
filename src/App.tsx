@@ -1,4 +1,4 @@
-import { useState, ChangeEvent } from 'react';
+import { useState, ChangeEvent, KeyboardEvent } from 'react';
 import './App.css';
 import poweredImage from './assets/icons/powered2.png';
 import leftArrowImage from './assets/icons/leftarrow.png';
@@ -21,6 +21,10 @@ const App = () => {
       setToShow(calculateImc(weightField, heightField));
     }
   };
+  const blockInvalidCharHandler = (event: KeyboardEvent<HTMLInputElement>) => {
+    ['e', 'E', '+', '-'].includes(event.key) && event.preventDefault();
+  };
+
   const backButtonHandler = () => {
     setToShow(null);
     setWeightField(0);
@@ -47,6 +51,7 @@ const App = () => {
             type="number"
             placeholder="Digite seu peso, Ex: 65.3 (em kg)"
             value={weightField > 0 ? weightField : ''}
+            onKeyDown={blockInvalidCharHandler}
             onChange={weightChangeHandler}
             disabled={!!toShow}
           />
@@ -55,6 +60,7 @@ const App = () => {
             type="number"
             placeholder="Digite sua altura, Ex: 1.7 (em metros)"
             value={heightField > 0 ? heightField : ''}
+            onKeyDown={blockInvalidCharHandler}
             onChange={heightChangeHandler}
             disabled={!!toShow}
           />
